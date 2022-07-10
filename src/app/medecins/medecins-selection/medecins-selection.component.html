@@ -1,0 +1,70 @@
+<br>
+<div style="text-align:center">
+    <div>
+        <mat-form-field>
+            <input matInput type="text" (keyup)="doFilter($any($event.target).value)" placeholder="Filter">
+        </mat-form-field>
+        <button (click)="redirectToCreate()" mat-icon-button style="margin-left: 77%;" 
+                matTooltip="Ajout d'un médecin" matTooltipPosition="left" matTooltipDisabled="true"  aria-label="Ajout d'un médecin">
+            <mat-icon>add_circle_outline</mat-icon>
+        </button>
+        <span flex></span>
+    </div>
+    <ng-container matColumnDef="creation">
+        <th mat-header-cell-bt *matHeaderCellDef style="background-color:darksalmon; max-width: 19px; min-width: 19px;">
+        </th>
+    </ng-container>
+    <table mat-table [dataSource]="(_storeService$.dataSourceO$.source| async)" class="table" matSort
+        matSortActive="medecinName" matSortStart="desc" (matSortChange)="sortData($event)">
+
+        <ng-container [matColumnDef]="col"
+            *ngFor="let col of (_storeService$.displayedColumns$ | async); let i = index">
+            <th mat-header-cell style="margin-left: 80px; max-width: 168px; min-width: 168px; word-wrap: break-word; "
+                *matHeaderCellDef mat-sort-header> {{displayedFields[i]}}</th>
+            <td mat-cell style="margin-left: 80px; max-width: 168px; min-width: 168px; word-wrap: break-word; "
+                *matCellDef="let element"> {{ element[col] }} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="details">
+            <th mat-header-cell-bt *matHeaderCellDef
+                style="background-color:darksalmon; max-width: 19px; min-width: 19px;"></th>
+            <td *matCellDef="let element">
+                <button (click)="redirectToDetails(element.medecinId)">
+                    <mat-icon class="customIconSize">comment</mat-icon>
+                </button>
+            </td>
+        </ng-container>
+
+        <ng-container matColumnDef="update">
+            <th mat-header-cell-bt *matHeaderCellDef
+                style="background-color:darksalmon; max-width: 19px; min-width: 19px;"></th>
+            <td *matCellDef="let element">
+                <button (click)="redirectToUpdate(element.medecinId)">
+                    <mat-icon class="customIconSize">update</mat-icon>
+                </button>
+            </td>
+        </ng-container>
+
+        <ng-container matColumnDef="delete">
+            <th mat-header-cell-bt *matHeaderCellDef
+                style="background-color:darksalmon; max-width: 19px; min-width: 19px;"></th>
+            <td *matCellDef="let element">
+                <button (click)="redirectToDelete(element.medecinId)">
+                    <mat-icon class="customIconSize">delete</mat-icon>
+                </button>
+            </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="(_storeService$.displayedColumns$ | async)"></tr>
+        <tr mat-row *matRowDef="let row; columns: (_storeService$.displayedColumns$ | async);"></tr>
+    </table>
+    <mat-paginator style="align-items: center;background-color:darksalmon;" [pageSize]="10"
+        [pageSizeOptions]="[10, 21, 42, 64, 128, 256]">
+    </mat-paginator>
+</div>
+
+<div class="scroll-to-top" [ngClass]="{'show-scrollTop': windowScrolled}">
+    <button type="button" class="btn active" data-toggle="button" aria-pressed="true" (click)="scrollToTop()">
+        <mat-icon>keyboard_arrow_up</mat-icon>
+    </button>
+</div>

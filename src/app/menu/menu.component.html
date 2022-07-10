@@ -1,0 +1,64 @@
+<!-- Modal view -->
+<jw-modal id="menu-modal-1">
+    <h1>A Custom Modal!</h1>
+    <p>Home page text: <input type="text" [(ngModel)]="bodyText" /></p>
+</jw-modal>
+
+<jw-modal id="menu-modal-2">
+    <h1 style="height: 500px;">Wait loading... !</h1>
+</jw-modal>
+
+<!-- Nav -->
+<div class="navbar">
+    <div class="top">
+        <mat-icon>notification_none</mat-icon>
+    </div>
+</div>
+<div class="user">
+    <img [src]="cheminImage" alt="">
+    <h4 class="name">{{_storeService$.rolesOfPersonneLogged$ | async}}</h4>
+    <p class="mail">{{_storeService$.emailOfPersonneLogged$ | async}}</p>
+</div>
+<div class="menu-head">
+    <span>dashboard</span>
+</div>
+<div class="menu-item">
+    <button (click)="button1()" mat-button class="menu-button"
+                                *ngIf="_storeService$.menuOption1$.value!.length > 0" 
+                                routerLink="/{{this.replaceSpec(_storeService$.menuOption1$.value!)}}">
+            <mat-icon>dashboard</mat-icon>
+            <span>{{_storeService$.menuOption1$| async}}</span>
+    </button>
+    <button (click)="button2()" mat-button class="menu-button" *ngIf="_storeService$.menuOption2$.value!.length > 0">
+        <mat-icon>message</mat-icon>
+        <span>{{_storeService$.menuOption2$| async}}</span>
+    </button>
+    <button (click)="button3()" mat-button class="menu-button" *ngIf="_storeService$.menuOption3$.value!.length > 0">
+        <mat-icon>comment</mat-icon>
+        <span>{{_storeService$.menuOption3$| async}}</span>
+    </button>
+    <button (click)="button4()" mat-button class="menu-button" *ngIf="_storeService$.menuOption4$.value!.length > 0">
+        <mat-icon>pages</mat-icon>
+        <span>{{_storeService$.menuOption4$| async}}</span>
+    </button>
+    <button (click)="button5()" mat-button class="menu-button" *ngIf="_storeService$.menuOption5$.value!.length > 0">
+        <mat-icon>settings</mat-icon>
+        <span>{{_storeService$.menuOption5$| async}}</span>
+    </button>
+    <button (click)="button6()" mat-button class="menu-button" *ngIf="_storeService$.menuOption6$.value!.length > 0">
+        <mat-icon>settings</mat-icon>
+        <span>{{_storeService$.menuOption6$| async}}</span>
+    </button>
+    <button (click)="button7()" mat-button class="menu-button" *ngIf="_storeService$.menuOption7$.value!.length > 0">
+        <mat-icon>settings</mat-icon>
+        <span>{{_storeService$.menuOption7$| async}}</span>
+    </button>
+    <button (click)="button8()" mat-button class="menu-button" *ngIf="_storeService$.menuOption8$.value!.length > 0">
+        <mat-icon>settings</mat-icon>
+        <span>{{_storeService$.menuOption8$| async}}</span>
+    </button>
+    <button (click)="button9()" mat-button class="menu-button" *ngIf="_storeService$.menuOption9$.value!.length > 0">
+        <mat-icon>settings</mat-icon>
+        <span>{{_storeService$.menuOption9$| async}}</span>
+    </button>
+</div>

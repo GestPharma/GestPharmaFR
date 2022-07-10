@@ -1,0 +1,96 @@
+<!-- Modal view -->
+<jw-modal id="foot-modal-1">
+    <h1>A Custom Modal!</h1>
+    <p>Home page text: <input type="text" [(ngModel)]="bodyText" placeholder="..."/></p>
+</jw-modal>
+
+<jw-modal id="foot-modal-2">
+    <h1 style="height:1000px">A Tall Custom Modal!</h1>
+</jw-modal>
+
+<!-- Wrapper -->
+<div id="wrapper" class="is-preload" tabindex="-1">
+    <!-- Footer -->
+    <footer id="footer" class="footer">
+        <div #target id="wrapper" class="inner" tabindex="-1">
+            <section *ngIf="(_storeService$.isUserLogin$ | async) != true " tabindex="-1">
+                <h2>Saisissez vos accès : </h2>
+                <form>
+                    <div class="fields" tabindex="-1">
+                        <div class="field half">
+                            <input type="email" name="AccEmail" id="email" placeholder="Email"
+                                [(ngModel)]="AccEmail" />
+                        </div>
+                        <div class="field half">
+                            <input type="password" name="AccPwd" id="login" placeholder="Password"
+                                [(ngModel)]="AccPwd" />
+                        </div>
+                    </div>
+                    <ul class="actions">
+                        <li><input type="submit" (click)="logUsers()" value="Login" class="primary" placeholder="Login"/></li>
+                        <li><input type="submit" (click)="regUsers()" value="Register" class="primary:disabled"placeholder="Register"/></li>
+                    </ul>
+                </form>
+            </section>
+            <section *ngIf="(_storeService$.isUserLogin$ | async) == true">
+                <h2>Saisissez vos accès : </h2>
+                <form>
+                    <div class="fields">
+                        <div class="field half">
+                            <input type="email" name="AccEmail" id="email" placeholder="Email"
+                                [(ngModel)]="AccEmail" />
+                        </div>
+                        <div class="field half">
+                            <input type="password" name="AccPwd" id="login" placeholder="Password"
+                                [(ngModel)]="AccPwd" />
+                        </div>
+                    </div>
+                    <ul class="actions">
+                        <li><input type="submit" (click)="byeUsers()" value="Logout" class="primary" placeholder="..."/></li>
+                    </ul>
+                </form>
+            </section>
+            <section>
+                <h2>Suivez-nous :</h2>
+                <ul class="icons">
+                    <li><a href="#" class="icon brands style2"> <img src="assets/images/icones/i-facebook2.gif"
+                                alt="facebook" /></a></li>
+                    <li><a href="#" class="icon brands style2"> <img
+                                src="assets/images/icones/i-facebook-messenger2.gif" alt="facebook messenger" /></a></li>
+                    <li><a href="#" class="icon brands style2"> <img src="assets/images/icones/i-github2.gif"
+                                alt="github" /></a></li>
+                    <li><a href="#" class="icon brands style2"> <img src="assets/images/icones/i-instagram2.gif"
+                                alt="instagram" /></a></li>
+                    <li><a href="#" class="icon brands style2"> <img src="assets/images/icones/i-linkedin2.gif"
+                                alt="inkedin" /></a></li>
+                    <li><a href="#" class="icon brands style2"> <img src="assets/images/icones/i-netflix2.gif"
+                                alt="netflix" /></a></li>
+                    <li><a href="#" class="icon brands style2"> <img src="assets/images/icones/i-pinterest2.gif"
+                                alt="netflix" /></a></li>
+                    <li><a href="#" class="icon brands style2"> <img src="assets/images/icones/i-skype2.gif"
+                                alt="skype" /></a></li>
+                    <li><a href="#" class="icon brands style2"> <img src="assets/images/icones/i-snapchat2.gif"
+                                alt="snapchat" /></a></li>
+                    <li><a href="#" class="icon brands style2"> <img src="assets/images/icones/i-spotify2.gif"
+                                alt="spotify" /></a></li>
+                    <li><a href="#" class="icon brands style2"> <img src="assets/images/icones/i-tic-tac2.gif"
+                                alt="tictok" /></a></li>
+                    <li><a href="#" class="icon brands style2"> <img src="assets/images/icones/i-twitch2.gif"
+                                alt="twitch" /></a></li>
+                    <li><a href="#" class="icon brands style2"> <img src="assets/images/icones/i-twitter2.gif"
+                                alt="twitter" /></a></li>
+                    <li><a href="#" class="icon brands style2"> <img src="assets/images/icones/i-viber2.gif"
+                                alt="twitter" /></a></li>
+                    <li><a href="#" class="icon brands style2"> <img src="assets/images/icones/i-whatsapp2.gif"
+                                alt="whatsap" /></a></li>
+                    <li><a href="#" class="icon brands style2"> <img src="assets/images/icones/i-youtube2.gif"
+                                alt="Youtube" /></a></li>
+                </ul>
+            </section>
+            <ul class="copyright">
+                <li>&copy; GestPharma. All rights reserved</li>
+                <li>Design: <a href="">By me and free template Phantom</a></li>
+            </ul>
+        </div>
+    </footer>
+</div>

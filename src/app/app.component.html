@@ -1,0 +1,34 @@
+<div id="main">
+    <div class="inner">
+        <!-- Menu -->
+        <mat-sidenav-container>
+            <mat-sidenav #sidenav mode="side" opened="true" fxHide.gt-sm="true">
+                <app-menu></app-menu>
+            </mat-sidenav>
+            <mat-sidenav-content>
+                <div class="Content" id="PgContent">
+                    <div class="mat-toolbar">
+                        <mat-toolbar>
+                            <mat-icon>
+                                <span class="material-symbols-outlined" (click)="sidenav.toggle()">menu</span>
+                            </mat-icon>
+                            <div>
+                                <!-- Logo -->
+                                <a class="logo">
+                                    <img src="assets/images/logo.png" alt="" /><span class="title">GestPharma</span>
+                                </a>
+                            </div>
+                            <div class="box">
+                                <mat-icon>search</mat-icon>
+                                <mat-icon>bookmark_border</mat-icon>
+                                <mat-icon>mail_outline</mat-icon>
+                            </div>
+                        </mat-toolbar>
+                    </div>
+                </div>
+                <router-outlet></router-outlet>
+            </mat-sidenav-content>
+        </mat-sidenav-container>
+    </div>
+</div>
+<app-footer-front></app-footer-front>

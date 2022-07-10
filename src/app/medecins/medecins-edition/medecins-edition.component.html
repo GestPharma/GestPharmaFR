@@ -1,0 +1,86 @@
+<div class="container" *ngIf="!post; ngIfElse forminfo" novalidate>
+  <div class="container" tabindex="-1">
+    <form [formGroup]="formGroup" class="form">
+
+      <mat-form-field class="form-element">
+        <input matInput placeholder="Nom & prénom du médecin" formControlName="MedecinName"
+          (keydown.Shift.Tab)="onKey($event);false">
+        <mat-hint>Choose firstname AND lastname of at least eight characters.[-- --]</mat-hint>
+        <mat-error *ngIf="!formGroup.controls['MedecinName'].valid && formGroup.controls['MedecinName'].touched">
+          {{ getErrorMedecinName() }}
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="form-element">
+        <input matInput placeholder="Numéro INAMI" formControlName="MedecinInami">
+        <mat-hint>Indicate INAMI number of exactly eight characters.[------]</mat-hint>
+        <mat-error *ngIf="!formGroup.controls['MedecinInami'].valid && formGroup.controls['MedecinInami'].touched">
+          {{ getErrorMedecinInami() }}
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="form-element">
+        <input matInput placeholder="Rue" formControlName="MedecinRue">
+        <mat-hint>Indicate the street of at least eight characters.</mat-hint>
+        <mat-error *ngIf="!formGroup.controls['MedecinRue'].valid && formGroup.controls['MedecinRue'].touched">
+          {{ getErrorMedecinRue() }}
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="form-element">
+        <input matInput placeholder="Ville" formControlName="MedecinVille">
+        <mat-hint>Indicate the town of at least eight characters.</mat-hint>
+        <mat-error *ngIf="!formGroup.controls['MedecinVille'].valid && formGroup.controls['MedecinVille'].touched">
+          {{ getErrorMedecinVille() }}
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="form-element">
+        <input matInput placeholder="Numéro de téléphone FIXE" formControlName="MedecinTelephone">
+        <mat-hint>Indicate phone number with exactly ten number or twelwe. [--- -- -- -- --]</mat-hint>
+        <mat-error
+          *ngIf="!formGroup.controls['MedecinTelephone'].valid && formGroup.controls['MedecinTelephone'].touched">
+          {{ getErrorMedecinTelephone() }}
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="form-element">
+        <input matInput placeholder="Numéro de téléphone GSM" formControlName="MedecinGsm">
+        <mat-hint>Indicate phone number with exactly ten number. [-----------]</mat-hint>
+        <mat-error *ngIf="!formGroup.controls['MedecinGsm'].valid && formGroup.controls['MedecinGsm'].touched">
+          {{ getErrorMedecinGsm() }}
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="form-element">
+        <input matInput placeholder="Numéro de FAX" formControlName="MedecinFax">
+        <mat-hint>Indicate phone number with exactly ten number or twelwe. [--- -- -- -- --]</mat-hint>
+        <mat-error *ngIf="!formGroup.controls['MedecinFax'].valid && formGroup.controls['MedecinFax'].touched">
+          {{ getErrorMedecinFax() }}
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="form-element">
+        <input matInput placeholder="Email du médecin" formControlName="MedecinEmail"
+          (keydown.Tab)="onKey($event);false">
+        <mat-hint>Indicate email adresss of doctor. [--@--.--]</mat-hint>
+        <mat-error *ngIf="!formGroup.controls['MedecinEmail'].valid && formGroup.controls['MedecinEmail'].touched">
+          {{ getErrorMedecinEmail() }}
+        </mat-error>
+      </mat-form-field>
+      <button mat-raised-button color="primary" class="button3" (click)="deleteMedecin()">
+        <a mat-fab>Suppr</a>
+      </button>
+      <button mat-raised-button color="primary" class="button3">
+        <a mat-fab routerLink="./medecins/selection">Edit</a>
+      </button>
+      <button mat-raised-button color="primary" class="button3">
+        <a mat-fab routerLink="./medecins/selection">Back</a>
+      </button>
+    </form>
+  </div>
+  <ng-template #forminfo>
+    <div class="container">
+      {{ post | json }}
+    </div>
+  </ng-template>
